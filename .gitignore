@@ -3,3 +3,4 @@ venv/
 env/
 **/raw_images/
 **/raw_videos/
+.DS_Store/
