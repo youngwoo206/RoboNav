@@ -5,7 +5,7 @@ from typing import List
 # workdir where videos live
 workdir = "/Users/ylee/Documents/Projects/RoboNav/defect_detection/data/raw_videos/"
 # videos:List[str] = os.listdir(workdir)
-videos = ["3520.mp4"]
+videos = ["d8756.mp4"]
 
 for video in videos:
     print(f"Processsing Video: {video}")
@@ -17,7 +17,7 @@ for video in videos:
     success,image = vidcap.read()
     count = 1
     while success:
-        cv2.imwrite(f"{final_path}/{count}.jpg", image)
+        cv2.imwrite(f"{final_path}/{prefix}-{count}.jpg", image)
         success, image = vidcap.read()
         count += 1
 

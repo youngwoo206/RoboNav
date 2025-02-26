@@ -4,3 +4,4 @@ env/
 **/raw_images/
 **/raw_videos/
 .DS_Store/
+defect_detection/data
