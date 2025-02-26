@@ -5,3 +5,5 @@ env/
 **/raw_videos/
 .DS_Store/
 defect_detection/data
+defect_detection/robonav_data.coco/
+defect_detection/weights/
