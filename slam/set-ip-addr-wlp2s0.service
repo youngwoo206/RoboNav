@@ -1,0 +1,14 @@
+[Unit]
+Description=Assign IP Address to wlp2s0
+After=set-ip-addr-setup.service
+Wants=set-ip-addr-setup.service
+[Service]
+Type=oneshot
+ExecStart=/sbin/ip addr add 192.168.55.1/24 dev wlp2s0
+ExecStop="Something has gone wrong"
+RemainAfterExit=yes
+User=root
+TimeoutSec=300
+
+[Install]
+WantedBy=multi-user.target

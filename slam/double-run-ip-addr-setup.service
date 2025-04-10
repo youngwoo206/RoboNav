@@ -1,0 +1,15 @@
+[Unit]
+Description=Double check assigning ip addr to wlp2s0
+After=set-ip-addr-setup.service
+Wants=set-ip-addr-setup.service
+[Service]
+Type=oneshot
+ExecStartPre=/bin/bash /home/administrator/set_ip.sh
+ExecStart=sudo systemctl restart set-ip-addr-setup.service
+ExecStop=echo "hmm something has gone wrong with the double run"
+RemainAfterExit=yes
+User=root
+TmieoutSec=180
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,18 @@
+[Unit]
+Description=Assign IP Address to br0
+After=systemd-networkd-wait-online.service
+Wants=systemd-networkd-wait-online.service
+[Service]
+Type=oneshot
+#ExecStartPre=/bin/sh -c 'sudo ip link set wlp2s0 up; until ip link show wlp2s0 | grep -q "state UP"; do echo "Sleeping"; sleep 1; done'
+ExecStartPre=/bin/bash /home/administrator/set_ip.sh
+ExecStart=/sbin/ip addr add 192.168.55.1/24 dev br0
+#ExecStop=/sbin/ip addr del 192.168.55.1/24 dev br0
+ExecStop=echo "oops something's gone wrong"
+RemainAfterExit=yes
+User=root
+TimeoutSec=300
+
+[Install]
+WantedBy=multi-user.target
+
